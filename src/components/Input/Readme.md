@@ -8,7 +8,7 @@
     </PanelHeader>
     <Group>
       <FormItem top="Фамилия">
-        <Input type="text" defaultValue="Петров" />
+        <Input type="text" defaultValue="Петров" before={<Icon24View/>} after={<IconButton><Icon24Replay /></IconButton>} />
       </FormItem>
       <FormItem>
         <Input type="text" defaultValue="Иванов" align="center" />
