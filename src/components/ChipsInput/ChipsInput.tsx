@@ -94,6 +94,7 @@ const ChipsInput = <Option extends ChipsInputOption>(props: ChipsInputProps<Opti
         'ChipsInput--withChips': !!selectedOptions.length,
       }, className)}
       style={style}
+      disabled={disabled}
     >
       <div className="ChipsInput__container">
         {selectedOptions.map((option: Option) => {
@@ -114,7 +115,7 @@ const ChipsInput = <Option extends ChipsInputOption>(props: ChipsInputProps<Opti
             autoCorrect="off"
             spellCheck={false}
             aria-autocomplete="list"
-            tabIndex={disabled ? null : tabIndex}
+            tabIndex={disabled ? -1 : tabIndex}
             className="ChipsInput__el"
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}

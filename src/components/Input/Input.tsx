@@ -33,6 +33,7 @@ const Input: FunctionComponent<InputProps> = ({
       getRootRef={getRootRef}
       before={before}
       after={after}
+      disabled={restProps.disabled}
     >
       <input {...restProps} className="Input__el" ref={getRef} />
     </FormField>

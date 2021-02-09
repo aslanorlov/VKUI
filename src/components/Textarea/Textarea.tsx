@@ -124,6 +124,7 @@ class Textarea extends PureComponent<TextareaProps, TextareaState> {
         className={classNames(getClassName('Textarea', platform), className, `Textarea--sizeY-${sizeY}`)}
         style={style}
         getRootRef={getRootRef}
+        disabled={restProps.disabled}
       >
         <textarea
           {...restProps}

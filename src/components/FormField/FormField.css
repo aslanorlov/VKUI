@@ -83,13 +83,6 @@
   transform-origin: left top;
 }
 
-.Textarea .Textarea__el:not(:disabled) ~ .FormField__border--hover,
-.Select:not(.Select--disabled) .FormField__border--hover,
-.Input .Input__el:not(:disabled) ~ .FormField__border--hover,
-.ChipsInput:not(.ChipsInput--disabled) .ChipsInput__container ~ .FormField__border--hover {
-  border-color: var(--icon_tertiary_alpha);
-}
-
 .FormItem--error .FormField__border {
   background: var(--field_error_background);
   border-color: var(--field_error_border);
@@ -101,6 +94,14 @@
 
 .FormField--disabled .FormField__border {
   opacity: .4;
+}
+
+.FormField__border--hover {
+  border-color: var(--icon_tertiary_alpha);
+}
+
+.FormField--disabled .FormField__border--hover {
+  border-color: var(--field_border);
 }
 
 .FormField.Input .Input__el:focus ~ .FormField__border,

@@ -101,6 +101,7 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
         }, className)}
         style={style}
         getRootRef={getRootRef}
+        disabled={disabled}
       >
         <select
           {...restProps}
