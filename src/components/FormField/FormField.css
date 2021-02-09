@@ -30,6 +30,21 @@
   z-index: 2;
 }
 
+.FormField__before {
+  margin-right: 0;
+}
+
+.FormField__before::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: block;
+  width: 1px;
+  height: 24px;
+  background-color: var(--field_border);
+}
+
 .FormField__before,
 .FormField__after,
 .FormField .IconButton {
@@ -61,6 +76,11 @@
 .FormField--sizeY-compact .FormField__after,
 .FormField--sizeY-compact .IconButton {
   height: 36px;
+}
+
+.FormField--sizeY-compact .FormField__before::after {
+  top: 8px;
+  height: 20px;
 }
 
 .FormField--sizeY-compact .Icon--16,
