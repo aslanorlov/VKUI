@@ -6,26 +6,26 @@ import { HasRootRef } from '../../types';
 import { hasReactNode } from '@vkontakte/vkjs';
 import { withAdaptivity, AdaptivityProps } from '../../hoc/withAdaptivity';
 
-export interface FormFieldOwnProps {
+export interface FormFieldProps {
   /**
-   * Иконка или кнопка 24.
+   * Иконка 12|16|20|24|28 или `IconButton`.
    */
   before?: ReactNode;
   /**
-   * Иконка или кнопка 24.
+   * Иконка 12|16|20|24|28 или `IconButton`.
    */
   after?: ReactNode;
 }
 
-export interface FormFieldProps extends
+interface FormFieldOwnProps extends
   AllHTMLAttributes<HTMLElement>,
   HasRootRef<HTMLElement>,
-  FormFieldOwnProps,
-  AdaptivityProps {
+  AdaptivityProps,
+  FormFieldProps {
   Component?: ElementType;
 }
 
-const FormField: React.FunctionComponent<FormFieldProps> = withAdaptivity(({
+const FormField: React.FunctionComponent<FormFieldOwnProps> = withAdaptivity(({
   Component,
   className,
   children,
@@ -34,7 +34,7 @@ const FormField: React.FunctionComponent<FormFieldProps> = withAdaptivity(({
   after,
   sizeY,
   ...restProps
-}: FormFieldProps) => {
+}: FormFieldOwnProps) => {
   const platform = usePlatform();
   const [hover, setHover] = useState(false);
 
