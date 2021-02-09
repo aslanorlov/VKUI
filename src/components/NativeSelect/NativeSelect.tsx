@@ -1,7 +1,7 @@
 import React, { ChangeEvent, ChangeEventHandler, RefCallback, SelectHTMLAttributes } from 'react';
 import { classNames } from '../../lib/classNames';
 import { Icon20Dropdown, Icon24Dropdown } from '@vkontakte/icons';
-import FormField from '../FormField/FormField';
+import FormField, { FormFieldProps } from '../FormField/FormField';
 import { HasAlign, HasRef, HasRootRef } from '../../types';
 import { withAdaptivity, AdaptivityProps, SizeType } from '../../hoc/withAdaptivity';
 import { setRef } from '../../lib/utils';
@@ -17,7 +17,8 @@ export interface NativeSelectProps extends
   HasRootRef<HTMLLabelElement>,
   HasAlign,
   AdaptivityProps,
-  HasPlatform {
+  HasPlatform,
+  FormFieldProps {
   defaultValue?: string;
   placeholder?: string;
 }
@@ -85,7 +86,7 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
 
   render() {
     const { style, value, defaultValue, onChange, align, placeholder, children, className,
-      getRef, getRootRef, disabled, sizeX, sizeY, platform, ...restProps } = this.props;
+      getRef, getRootRef, disabled, sizeX, sizeY, platform, after, ...restProps } = this.props;
 
     const TypographyComponent = platform === VKCOM || sizeY === SizeType.COMPACT ? Text : Headline;
 
@@ -102,6 +103,12 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
         style={style}
         getRootRef={getRootRef}
         disabled={disabled}
+        after={(
+          <>
+            {after}
+            {sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
+          </>
+        )}
       >
         <select
           {...restProps}
@@ -116,7 +123,6 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
         </select>
         <TypographyComponent weight="regular" className="Select__container">
           <div className="Select__title">{this.state.title}</div>
-          {sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
         </TypographyComponent>
       </FormField>
     );
