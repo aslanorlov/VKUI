@@ -41,6 +41,14 @@
   padding: 14px;
 }
 
+.FormField .Icon--20 {
+  padding: 12px;
+}
+
+.FormField .Icon--20.Icon--h-16 {
+  padding: 14px 12px;
+}
+
 .FormField .Icon--24 {
   padding: 10px;
 }
@@ -58,6 +66,14 @@
 .FormField--sizeY-compact .Icon--16,
 .FormField--sizeY-compact .Icon--16.Icon--w-8 {
   padding: 10px;
+}
+
+.FormField--sizeY-compact .Icon--20 {
+  padding: 8px;
+}
+
+.FormField--sizeY-compact .Icon--20.Icon--h-16 {
+  padding: 10px 8px;
 }
 
 .FormField--sizeY-compact .Icon--24 {
