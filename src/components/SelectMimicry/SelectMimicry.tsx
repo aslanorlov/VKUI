@@ -1,7 +1,7 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react';
 import { classNames } from '../../lib/classNames';
 import { Icon24Dropdown, Icon20Dropdown } from '@vkontakte/icons';
-import FormField from '../FormField/FormField';
+import FormField, { FormFieldProps } from '../FormField/FormField';
 import { HasAlign, HasRootRef } from '../../types';
 import { withAdaptivity, AdaptivityProps, SizeType } from '../../hoc/withAdaptivity';
 import { usePlatform } from '../../hooks/usePlatform';
@@ -14,7 +14,8 @@ export interface SelectMimicryProps extends
   HTMLAttributes<HTMLElement>,
   HasAlign,
   HasRootRef<HTMLElement>,
-  AdaptivityProps {
+  AdaptivityProps,
+  FormFieldProps {
   multiline?: boolean;
   disabled?: boolean;
 }
@@ -31,6 +32,7 @@ const SelectMimicry: FunctionComponent<SelectMimicryProps> = ({
   onClick,
   sizeX,
   sizeY,
+  after,
   ...restProps
 }: SelectMimicryProps) => {
   const platform = usePlatform();
@@ -52,10 +54,15 @@ const SelectMimicry: FunctionComponent<SelectMimicryProps> = ({
       getRootRef={getRootRef}
       onClick={disabled ? null : onClick}
       disabled={disabled}
+      after={(
+        <>
+          {after}
+          {sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
+        </>
+      )}
     >
       <TypographyComponent weight="regular" className="Select__container">
         <div className="Select__title">{children || placeholder}</div>
-        {sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
       </TypographyComponent>
     </FormField>
   );
