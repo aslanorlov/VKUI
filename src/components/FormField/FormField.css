@@ -48,34 +48,42 @@
 
 .FormField__before,
 .FormField__after,
-.FormField .IconButton {
+.FormField__before .IconButton,
+.FormField__after .IconButton {
   height: 44px;
 }
 
-.FormField .Icon--16,
-.FormField .Icon--16.Icon--w-8 {
+.FormField__before .Icon--16,
+.FormField__before .Icon--16.Icon--w-8,
+.FormField__after .Icon--16,
+.FormField__after .Icon--16.Icon--w-8 {
   padding: 14px;
 }
 
-.FormField .Icon--20 {
+.FormField__before .Icon--20,
+.FormField__after .Icon--20 {
   padding: 12px;
 }
 
-.FormField .Icon--20.Icon--h-16 {
+.FormField__before .Icon--20.Icon--h-16,
+.FormField__after .Icon--20.Icon--h-16 {
   padding: 14px 12px;
 }
 
-.FormField .Icon--24 {
+.FormField__before .Icon--24,
+.FormField__after .Icon--24 {
   padding: 10px;
 }
 
-.FormField .Icon--28 {
+.FormField__before .Icon--28,
+.FormField__after .Icon--28 {
   padding: 8px;
 }
 
 .FormField--sizeY-compact .FormField__before,
 .FormField--sizeY-compact .FormField__after,
-.FormField--sizeY-compact .IconButton {
+.FormField--sizeY-compact .FormField__before .IconButton,
+.FormField--sizeY-compact .FormField__after .IconButton {
   height: 36px;
 }
 
@@ -84,24 +92,30 @@
   height: 20px;
 }
 
-.FormField--sizeY-compact .Icon--16,
-.FormField--sizeY-compact .Icon--16.Icon--w-8 {
+.FormField--sizeY-compact .FormField__before .Icon--16,
+.FormField--sizeY-compact .FormField__before .Icon--16.Icon--w-8,
+.FormField--sizeY-compact .FormField__after .Icon--16,
+.FormField--sizeY-compact .FormField__after .Icon--16.Icon--w-8 {
   padding: 10px;
 }
 
-.FormField--sizeY-compact .Icon--20 {
+.FormField--sizeY-compact .FormField__before .Icon--20,
+.FormField--sizeY-compact .FormField__after .Icon--20 {
   padding: 8px;
 }
 
-.FormField--sizeY-compact .Icon--20.Icon--h-16 {
+.FormField--sizeY-compact .FormField__before .Icon--20.Icon--h-16,
+.FormField--sizeY-compact .FormField__after .Icon--20.Icon--h-16 {
   padding: 10px 8px;
 }
 
-.FormField--sizeY-compact .Icon--24 {
+.FormField--sizeY-compact .FormField__before .Icon--24,
+.FormField--sizeY-compact .FormField__after .Icon--24 {
   padding: 6px;
 }
 
-.FormField--sizeY-compact .Icon--28 {
+.FormField--sizeY-compact .FormField__before .Icon--28,
+.FormField--sizeY-compact .FormField__after .Icon--28 {
   padding: 4px;
 }
 
