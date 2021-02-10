@@ -22,9 +22,10 @@
 
 .FormField__before,
 .FormField__after {
-  flex-grow: 0;
   flex-shrink: 0;
   position: relative;
+  display: flex;
+  align-items: center;
   margin: -1px;
   color: var(--icon_secondary);
   z-index: 2;
