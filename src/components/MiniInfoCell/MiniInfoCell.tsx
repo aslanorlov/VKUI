@@ -56,7 +56,6 @@ export const MiniInfoCell: FC<MiniInfoCellProps> = (props) => {
     textWrap,
     textLevel,
     children,
-    className,
     ...restProps
   } = props;
 
@@ -65,22 +64,22 @@ export const MiniInfoCell: FC<MiniInfoCellProps> = (props) => {
   return (
     <Component
       {...restProps}
-      className={classNames(getClassName('MiniInfoCell', platform), {
+      scopedClass={classNames(getClassName('MiniInfoCell', platform), {
         [`MiniInfoCell--md-${mode}`]: mode !== 'base',
         [`MiniInfoCell--wr-${textWrap}`]: textWrap !== 'nowrap',
-      }, `MiniInfoCell--lvl-${textLevel}`, className)}
+      }, `MiniInfoCell--lvl-${textLevel}`)}
     >
-      <div className="MiniInfoCell__icon">
+      <div scopedClass="MiniInfoCell__icon">
         {before}
       </div>
       <Text
-        className="MiniInfoCell__content"
+        scopedClass="MiniInfoCell__content"
         weight={mode === 'more' ? 'medium' : 'regular'}
       >
         {children}
       </Text>
       {hasReactNode(after) &&
-      <div className="MiniInfoCell__after">
+      <div scopedClass="MiniInfoCell__after">
         {after}
       </div>
       }

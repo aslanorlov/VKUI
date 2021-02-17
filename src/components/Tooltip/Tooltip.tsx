@@ -91,7 +91,7 @@ const TooltipPortal = withDOM<TooltipPortalProps>(
       const { header, text, alignX, alignY, cornerOffset, mode } = this.props;
 
       return ReactDOM.createPortal(
-        <div className={
+        <div scopedClass={
           classNames(
             baseClassName,
             `Tooltip--x-${alignX}`,
@@ -101,11 +101,11 @@ const TooltipPortal = withDOM<TooltipPortalProps>(
               'Tooltip--fixed': this.fixedPortal,
             },
           )}>
-          <div className="Tooltip__container" style={{ top: this.state.y, left: this.state.x }} ref={this.getRef}>
-            <div className="Tooltip__corner" style={{ [alignX]: 20 + cornerOffset }} />
-            <div className="Tooltip__content">
-              {header && <Subhead weight="semibold" className="Tooltip__title">{header}</Subhead>}
-              {text && <Subhead weight="regular" className="Tooltip__text">{text}</Subhead>}
+          <div scopedClass="Tooltip__container" style={{ top: this.state.y, left: this.state.x }} ref={this.getRef}>
+            <div scopedClass="Tooltip__corner" style={{ [alignX]: 20 + cornerOffset }} />
+            <div scopedClass="Tooltip__content">
+              {header && <Subhead weight="semibold" scopedClass="Tooltip__title">{header}</Subhead>}
+              {text && <Subhead weight="regular" scopedClass="Tooltip__text">{text}</Subhead>}
             </div>
           </div>
         </div>, this.portalTarget);

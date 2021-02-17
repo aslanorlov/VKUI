@@ -30,14 +30,14 @@ export const HorizontalCell: FC<HorizontalCellProps> = (props) => {
   const platform = usePlatform();
 
   return (
-    <div className={classNames(getClassName('HorizontalCell', platform), `HorizontalCell--${size}`, className)} ref={getRootRef} style={style}>
+    <div scopedClass={classNames(getClassName('HorizontalCell', platform), `HorizontalCell--${size}`)} ref={getRootRef} style={style} className={className}>
       <Tappable getRootRef={getRef} {...restProps}>
-        {hasReactNode(children) && <div className="HorizontalCell__image">{children}</div>}
-        <div className="HorizontalCell__content">
+        {hasReactNode(children) && <div scopedClass="HorizontalCell__image">{children}</div>}
+        <div scopedClass="HorizontalCell__content">
           {hasReactNode(header) && (
-            <CellTypography size={size} className="HorizontalCell__title">{header}</CellTypography>
+            <CellTypography size={size} scopedClass="HorizontalCell__title">{header}</CellTypography>
           )}
-          {hasReactNode(subtitle) && <Caption weight="regular" level="1" className="HorizontalCell__subtitle">{subtitle}</Caption>}
+          {hasReactNode(subtitle) && <Caption weight="regular" level="1" scopedClass="HorizontalCell__subtitle">{subtitle}</Caption>}
         </div>
       </Tappable>
     </div>

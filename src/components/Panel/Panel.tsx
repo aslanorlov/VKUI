@@ -39,23 +39,23 @@ class Panel extends Component<PanelProps> {
   };
 
   render() {
-    const { className, centered, children, platform, getRootRef, sizeX, ...restProps } = this.props;
+    const { centered, children, platform, getRootRef, sizeX, ...restProps } = this.props;
 
     return (
       <PanelContext.Provider value={this.childContext}>
         <div
           {...restProps}
           ref={this.getRef}
-          className={classNames(getClassName('Panel', platform), className, `Panel--${sizeX}`, {
+          scopedClass={classNames(getClassName('Panel', platform), `Panel--${sizeX}`, {
             'Panel--centered': centered,
             [`Panel--sizeX-${sizeX}`]: true,
           })}
         >
-          <Touch Component={TooltipContainer} className="Panel__in">
-            {platform === IOS && <div className="Panel__fade" />}
-            <div className="Panel__in-before" />
-            {centered ? <div className="Panel__centered">{children}</div> : children}
-            <div className="Panel__in-after" />
+          <Touch Component={TooltipContainer} scopedClass="Panel__in">
+            {platform === IOS && <div scopedClass="Panel__fade" />}
+            <div scopedClass="Panel__in-before" />
+            {centered ? <div scopedClass="Panel__centered">{children}</div> : children}
+            <div scopedClass="Panel__in-after" />
           </Touch>
         </div>
       </PanelContext.Provider>

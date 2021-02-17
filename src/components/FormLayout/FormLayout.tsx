@@ -5,7 +5,6 @@ import {
   ElementType,
 } from 'react';
 import { getClassName } from '../../helpers/getClassName';
-import { classNames } from '../../lib/classNames';
 import { usePlatform } from '../../hooks/usePlatform';
 import { HasRef } from '../../types';
 
@@ -19,7 +18,6 @@ const FormLayout: FunctionComponent<FormLayoutProps> = (props: FormLayoutProps) 
   const {
     children,
     Component,
-    className,
     getRef,
     onSubmit,
     ...restProps
@@ -29,15 +27,15 @@ const FormLayout: FunctionComponent<FormLayoutProps> = (props: FormLayoutProps) 
   return (
     <Component
       {...restProps}
-      className={classNames(getClassName('FormLayout', platform), className)}
+      scopedClass={getClassName('FormLayout', platform)}
       onSubmit={onSubmit}
       ref={getRef}
     >
-      <div className="FormLayout__container">
+      <div scopedClass="FormLayout__container">
         {children}
       </div>
       {Component === 'form' &&
-        <input type="submit" className="FormLayout__submit" value="" />
+        <input type="submit" scopedClass="FormLayout__submit" value="" />
       }
     </Component>
   );

@@ -8,7 +8,6 @@ import {
 } from 'react';
 import { usePlatform } from '../../hooks/usePlatform';
 import { hasReactNode, isFunction, setRef } from '../../lib/utils';
-import { classNames } from '../../lib/classNames';
 import { getClassName } from '../../helpers/getClassName';
 import { HasRef, HasRootRef } from '../../types';
 
@@ -110,34 +109,35 @@ export const WriteBar: FC<WriteBarProps> = (props: WriteBarProps) => {
   return (
     <div
       ref={getRootRef}
-      className={classNames(getClassName('WriteBar', platform), className)}
+      scopedClass={getClassName('WriteBar', platform)}
+      className={className}
       style={style}
     >
-      <form className="WriteBar__form" onSubmit={(e) => e.preventDefault()}>
+      <form scopedClass="WriteBar__form" onSubmit={(e) => e.preventDefault()}>
         {hasReactNode(before) &&
-        <div className="WriteBar__before">
+        <div scopedClass="WriteBar__before">
           {before}
         </div>
         }
 
-        <div className="WriteBar__formIn">
+        <div scopedClass="WriteBar__formIn">
           <textarea
             {...restProps}
-            className="WriteBar__textarea"
+            scopedClass="WriteBar__textarea"
             onChange={onTextareaChange}
             ref={getTextareaElRef}
             value={value}
           />
 
           {hasReactNode(inlineAfter) &&
-          <div className="WriteBar__inlineAfter">
+          <div scopedClass="WriteBar__inlineAfter">
             {inlineAfter}
           </div>
           }
         </div>
 
         {hasReactNode(after) &&
-        <div className="WriteBar__after">
+        <div scopedClass="WriteBar__after">
           {after}
         </div>
         }

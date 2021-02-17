@@ -1,5 +1,4 @@
 import { FunctionComponent, HTMLAttributes, ReactNode } from 'react';
-import { classNames } from '../../lib/classNames';
 import { getClassName } from '../../helpers/getClassName';
 import Tappable from '../Tappable/Tappable';
 import { usePlatform } from '../../hooks/usePlatform';
@@ -30,24 +29,24 @@ const PanelHeaderContent: FunctionComponent<PanelHeaderContentProps> = ({
   const baseClassNames = getClassName('PanelHeaderContent', platform);
 
   return (
-    <div {...rootProps} className={classNames(baseClassNames, className)} style={style}>
-      {hasReactNode(before) && <div className="PanelHeaderContent__before">{before}</div>}
-      <InComponent {...inProps} className="PanelHeaderContent__in" onClick={onClick}>
+    <div {...rootProps} scopedClass={baseClassNames} style={style} className={className}>
+      {hasReactNode(before) && <div scopedClass="PanelHeaderContent__before">{before}</div>}
+      <InComponent {...inProps} scopedClass="PanelHeaderContent__in" onClick={onClick}>
         {hasReactNode(status) &&
-          <Caption level="1" weight="regular" className="PanelHeaderContent__status">
+          <Caption level="1" weight="regular" scopedClass="PanelHeaderContent__status">
             {status}
           </Caption>
         }
-        <div className="PanelHeaderContent__children">
+        <div scopedClass="PanelHeaderContent__children">
           {hasReactNode(status) ?
             <Headline Component="span" weight="medium">
               {children}
             </Headline>
-            : <span className="PanelHeaderContent__children-in">{children}</span>
+            : <span scopedClass="PanelHeaderContent__children-in">{children}</span>
           }
-          {hasReactNode(aside) && <div className="PanelHeaderContent__aside">{aside}</div>}
+          {hasReactNode(aside) && <div scopedClass="PanelHeaderContent__aside">{aside}</div>}
         </div>
-        {hasReactNode(before) && <div className="PanelHeaderContent__width" />}
+        {hasReactNode(before) && <div scopedClass="PanelHeaderContent__width" />}
       </InComponent>
     </div>
   );

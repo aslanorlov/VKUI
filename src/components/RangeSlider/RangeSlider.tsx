@@ -116,7 +116,7 @@ class RangeSliderDumb extends Component<RangeSliderProps> {
   };
 
   render() {
-    const { className, min, max, step, value, defaultValue,
+    const { min, max, step, value, defaultValue,
       onChange, getRootRef, platform, sizeY, disabled, ...restProps } = this.props;
     const percentStart = (value[0] - min) / (max - min) * 100;
     const percentEnd = (value[1] - min) / (max - min) * 100;
@@ -128,23 +128,22 @@ class RangeSliderDumb extends Component<RangeSliderProps> {
         onStart={this.onStart}
         onMove={this.onMove}
         onEnd={this.onEnd}
-        className={classNames(
+        scopedClass={classNames(
           getClassName('Slider', platform),
-          className,
           `Slider--sizeY-${sizeY}`,
           disabled && 'Slider--disabled',
         )}
       >
-        <div ref={this.getRef} className="Slider__in">
+        <div ref={this.getRef} scopedClass="Slider__in">
           <div
-            className="Slider__dragger"
+            scopedClass="Slider__dragger"
             style={{
               width: `${percentEnd - percentStart}%`,
               left: `${percentStart}%`,
             }}
           >
-            <span className={classNames('Slider__thumb', 'Slider__thumb--start')} ref={this.thumbStart} />
-            <span className={classNames('Slider__thumb', 'Slider__thumb--end')} ref={this.thumbEnd} />
+            <span scopedClass={classNames('Slider__thumb', 'Slider__thumb--start')} ref={this.thumbStart} />
+            <span scopedClass={classNames('Slider__thumb', 'Slider__thumb--end')} ref={this.thumbEnd} />
           </div>
         </div>
       </Touch>

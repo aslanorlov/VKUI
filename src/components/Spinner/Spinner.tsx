@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { getClassName } from '../../helpers/getClassName';
-import { classNames } from '../../lib/classNames';
 import { Icon24Spinner, Icon32Spinner, Icon44Spinner, Icon16Spinner } from '@vkontakte/icons';
 import { usePlatform } from '../../hooks/usePlatform';
 
@@ -11,21 +10,21 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
 const svgSpinner = (size: SpinnerProps['size']): React.ReactElement => {
   switch (size) {
     case 'large':
-      return <Icon44Spinner className="Spinner__self" />;
+      return <Icon44Spinner scopedClass="Spinner__self" />;
     case 'medium':
-      return <Icon32Spinner className="Spinner__self" />;
+      return <Icon32Spinner scopedClass="Spinner__self" />;
     case 'small':
-      return <Icon16Spinner className="Spinner__self" />;
+      return <Icon16Spinner scopedClass="Spinner__self" />;
     default:
-      return <Icon24Spinner className="Spinner__self" />;
+      return <Icon24Spinner scopedClass="Spinner__self" />;
   }
 };
 
-const Spinner: FunctionComponent<SpinnerProps> = ({ className, size, ...restProps }: SpinnerProps) => {
+const Spinner: FunctionComponent<SpinnerProps> = ({ size, ...restProps }: SpinnerProps) => {
   const platform = usePlatform();
 
   return (
-    <div {...restProps} className={classNames(getClassName('Spinner', platform), className)}>
+    <div {...restProps} scopedClass={getClassName('Spinner', platform)}>
       {svgSpinner(size)}
     </div>
   );

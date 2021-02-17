@@ -65,7 +65,6 @@ const SimpleCell: FC<SimpleCellProps> = ({
   children,
   after,
   description,
-  className,
   expandable,
   multiline,
   Component,
@@ -87,9 +86,8 @@ const SimpleCell: FC<SimpleCellProps> = ({
   return (
     <RootComponent
       {...props}
-      className={
+      scopedClass={
         classNames(
-          className,
           getClassName('SimpleCell', platform),
           {
             'SimpleCell--exp': expandable,
@@ -100,22 +98,22 @@ const SimpleCell: FC<SimpleCellProps> = ({
       }
     >
       {before}
-      <div className="SimpleCell__main">
-        <div className="SimpleCell__content">
-          <SimpleCellTypography className="SimpleCell__children">{children}</SimpleCellTypography>
+      <div scopedClass="SimpleCell__main">
+        <div scopedClass="SimpleCell__content">
+          <SimpleCellTypography scopedClass="SimpleCell__children">{children}</SimpleCellTypography>
           {hasReactNode(badge) &&
-            <span className="SimpleCell__badge">
+            <span scopedClass="SimpleCell__badge">
               {badge}
             </span>
           }
         </div>
-        {description && <Caption weight="regular" level="1" className="SimpleCell__description">{description}</Caption>}
+        {description && <Caption weight="regular" level="1" scopedClass="SimpleCell__description">{description}</Caption>}
       </div>
       {hasReactNode(indicator) &&
-        <SimpleCellTypography className="SimpleCell__indicator">{indicator}</SimpleCellTypography>
+        <SimpleCellTypography scopedClass="SimpleCell__indicator">{indicator}</SimpleCellTypography>
       }
       {hasAfter &&
-        <div className="SimpleCell__after">
+        <div scopedClass="SimpleCell__after">
           {after}
           {expandable && platform === IOS && <Icon24Chevron />}
         </div>
