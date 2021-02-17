@@ -2,6 +2,6 @@ import 'react';
 
 declare module 'react' {
   interface Attributes {
-    scopedClass?: string;
+    scopedClass?: string | string[];
   }
 }
