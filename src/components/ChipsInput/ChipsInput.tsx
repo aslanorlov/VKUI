@@ -8,7 +8,7 @@ import React, {
   MouseEvent,
 } from 'react';
 import { HasAlign, HasRef, HasRootRef } from '../../types';
-import FormField from '../FormField/FormField';
+import FormField, { FormFieldProps } from '../FormField/FormField';
 import { classNames } from '../../lib/classNames';
 import Chip, { ChipProps } from '../Chip/Chip';
 import { noop } from '../../lib/utils';
@@ -34,6 +34,7 @@ export interface ChipsInputProps<Option extends ChipsInputOption> extends
   HasRef<HTMLInputElement>,
   HasRootRef<HTMLDivElement>,
   HasAlign,
+  FormFieldProps,
   AdaptivityProps {
   value: Option[];
   inputValue?: string;
@@ -48,7 +49,7 @@ export interface ChipsInputProps<Option extends ChipsInputOption> extends
 const ChipsInput = <Option extends ChipsInputOption>(props: ChipsInputProps<Option>) => {
   const { style, value, onChange, onInputChange, onKeyDown, onBlur, onFocus, children, className, inputValue,
     getRef, getRootRef, disabled, placeholder, tabIndex, getOptionValue, getOptionLabel, getNewOptionData, renderChip,
-    sizeY, ...restProps } = props;
+    sizeY, before, after, ...restProps } = props;
   const [focused, setFocused] = useState(false);
   const { fieldValue, addOptionFromInput, removeOption, selectedOptions, handleInputChange } = useChipsInput(props);
 
@@ -95,6 +96,8 @@ const ChipsInput = <Option extends ChipsInputOption>(props: ChipsInputProps<Opti
       }, className)}
       style={style}
       disabled={disabled}
+      before={before}
+      after={after}
     >
       <div className="ChipsInput__container">
         {selectedOptions.map((option: Option) => {
