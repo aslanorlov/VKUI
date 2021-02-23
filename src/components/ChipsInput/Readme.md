@@ -1,11 +1,10 @@
-Множественное добавление значений.  
-Поддерживаются любые модели данных с помощью пропсов `getOptionValue`, `getOptionLabel` и `getNewOptionData`.  
+Множественное добавление значений. Поддерживаются любые модели данных с помощью пропсов `getOptionValue`, `getOptionLabel` и `getNewOptionData`.  
+
 Изменить визуальное оформление значений можно с помощью `renderChip`.  
+
 Поле ввода принимает все валидные для `<input>` значения.
 
 ```jsx
-  // import { Icon16PaletteOutline } from '@vkontakte/icons';
-  // before={<Icon16PaletteOutline/>}
 class Example extends React.Component {
   constructor() {
     this.state = {
