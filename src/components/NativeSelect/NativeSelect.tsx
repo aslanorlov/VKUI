@@ -1,7 +1,7 @@
-import React, { ChangeEvent, ChangeEventHandler, RefCallback, SelectHTMLAttributes } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, RefCallback, SelectHTMLAttributes, ReactNode } from 'react';
 import { classNames } from '../../lib/classNames';
 import { Icon20Dropdown, Icon24Dropdown } from '@vkontakte/icons';
-import FormField, { FormFieldProps } from '../FormField/FormField';
+import FormField from '../FormField/FormField';
 import { HasAlign, HasRef, HasRootRef } from '../../types';
 import { withAdaptivity, AdaptivityProps, SizeType } from '../../hoc/withAdaptivity';
 import { setRef } from '../../lib/utils';
@@ -17,10 +17,13 @@ export interface NativeSelectProps extends
   HasRootRef<HTMLLabelElement>,
   HasAlign,
   AdaptivityProps,
-  HasPlatform,
-  FormFieldProps {
+  HasPlatform {
   defaultValue?: string;
   placeholder?: string;
+  /**
+   * Иконка 12|16|20|24|28 или `IconButton`.
+   */
+  before?: ReactNode;
 }
 
 export interface SelectState {
@@ -86,7 +89,7 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
 
   render() {
     const { style, value, defaultValue, onChange, align, placeholder, children, className,
-      getRef, getRootRef, disabled, sizeX, sizeY, platform, before, after, ...restProps } = this.props;
+      getRef, getRootRef, disabled, sizeX, sizeY, platform, before, ...restProps } = this.props;
 
     const TypographyComponent = platform === VKCOM || sizeY === SizeType.COMPACT ? Text : Headline;
 
@@ -108,12 +111,7 @@ class NativeSelect extends React.Component<NativeSelectProps, SelectState> {
         getRootRef={getRootRef}
         disabled={disabled}
         before={before}
-        after={(
-          <>
-            {after}
-            {sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
-          </>
-        )}
+        after={sizeY === SizeType.COMPACT ? <Icon20Dropdown /> : <Icon24Dropdown />}
       >
         <select
           {...restProps}
